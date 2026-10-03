@@ -53,6 +53,7 @@ import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import me.shedaniel.rei.impl.client.gui.screen.AbstractDisplayViewingScreen;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Vector3f;
+import org.lwjgl.glfw.GLFW;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -140,6 +141,33 @@ public class PatternPreviewWidget extends WidgetGroup {
                 if (this.afterWorldRender != null) {
                     this.afterWorldRender.accept(this);
                 }
+            }
+
+            private void pan(double dragX, double dragY) {
+                if (renderer == null) return;
+                Vector3f worldUp = new Vector3f(renderer.getWorldUp());
+                Vector3f eyePos = new Vector3f(renderer.getEyePos());
+                Vector3f lookAt = new Vector3f(renderer.getLookAt());
+
+                Vector3f forward = new Vector3f(lookAt).sub(eyePos).normalize();
+                Vector3f right = new Vector3f(forward).cross(worldUp).normalize();
+                Vector3f up = new Vector3f(right).cross(forward).normalize();
+
+                float speed = (float) camZoom();
+                Vector3f move = new Vector3f(right).mul((float) (-dragX / getSizeWidth() * speed))
+                        .add(new Vector3f(up).mul((float) (dragY / getSizeHeight() * speed)));
+
+                renderer.setCameraLookAt(eyePos.add(move), lookAt.add(move), worldUp);
+                center.add(move);
+            }
+
+            @Override
+            public boolean mouseDragged(double mouseX, double mouseY, int button, double dragX, double dragY) {
+                if (button == GLFW.GLFW_MOUSE_BUTTON_RIGHT && intractable && dragging) {
+                    pan(dragX, dragY);
+                    return false;
+                }
+                return super.mouseDragged(mouseX, mouseY, button, dragX, dragY);
             }
         }
                 .setOnSelected(this::onPosSelected)
