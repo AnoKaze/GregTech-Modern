@@ -7,7 +7,7 @@ mixinExtras = "0.5.0-rc.3"
 
 jei = "15.20.0.115"
 rei = "12.1.785"
-emi = "1.1.13+1.20.1"
+emi = "1.1.13+1.20.1+forge"
 ae2 = "15.0.18"
 kubejs = "2001.6.5-build.16"
 rhino = "2001.2.3-build.10"
@@ -68,10 +68,7 @@ jei-forge-impl      = { module = "mezz.jei:jei-1.20.1-forge", version.ref = "jei
 rei-plugin          = { module = "me.shedaniel:RoughlyEnoughItems-default-plugin-forge", version.ref = "rei" }
 rei-api             = { module = "me.shedaniel:RoughlyEnoughItems-api-forge", version.ref = "rei" }
 rei-forge           = { module = "me.shedaniel:RoughlyEnoughItems-forge", version.ref = "rei" }
-emi                 = { module = "dev.emi:emi-forge", version.ref = "emi" }
-# Modrinth Maven 上存在完全相同的 EMI 版本 (1.1.13+1.20.1+forge)，
-# 作为 terraformersmc（会 302 到不可达的 repo.sleeping.town）的兜底来源
-emi-modrinth        = { module = "maven.modrinth:emi", version = "1.1.13+1.20.1+forge" }
+emi                 = { module = "maven.modrinth:emi", version.ref = "emi" }
 
 ae2                 = { module = "appeng:appliedenergistics2-forge", version.ref = "ae2" }
 create              = { module = "com.simibubi.create:create-1.20.1", version.ref = "create"}
