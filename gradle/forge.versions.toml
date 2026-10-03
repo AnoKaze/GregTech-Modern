@@ -68,6 +68,9 @@ rei-plugin          = { module = "me.shedaniel:RoughlyEnoughItems-default-plugin
 rei-api             = { module = "me.shedaniel:RoughlyEnoughItems-api-forge", version.ref = "rei" }
 rei-forge           = { module = "me.shedaniel:RoughlyEnoughItems-forge", version.ref = "rei" }
 emi                 = { module = "dev.emi:emi-forge", version.ref = "emi" }
+# Modrinth Maven 上存在完全相同的 EMI 版本 (1.1.13+1.20.1+forge)，
+# 作为 terraformersmc（会 302 到不可达的 repo.sleeping.town）的兜底来源
+emi-modrinth        = { module = "maven.modrinth:emi", version = "1.1.13+1.20.1+forge" }
 
 ae2                 = { module = "appeng:appliedenergistics2-forge", version.ref = "ae2" }
 create              = { module = "com.simibubi.create:create-1.20.1", version.ref = "create"}

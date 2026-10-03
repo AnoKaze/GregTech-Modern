@@ -57,10 +57,10 @@ repositories {
         forRepository { maven { url = "https://cursemaven.com" } }
         filter { includeGroup("curse.maven") }
     }
-    exclusiveContent { // terraformers - EMI
-        forRepository { maven { url = "https://maven.terraformersmc.com/releases/" } }
-        filter { includeGroup("dev.emi") }
-    }
+    // 注意：EMI 的原始仓库 maven.terraformersmc.com 会 302 到 repo.sleeping.town，
+    // 国内网络通常不可达。因此 dependencies.gradle 改用上面的 Modrinth Maven 坐标
+    // maven.modrinth:emi:1.1.13+1.20.1+forge（与原 dev.emi:emi-forge 制品内容一致）。
+    // 若能直连 repo.sleeping.town，可在此恢复 terraformersmc 仓库并回退 dependencies.gradle。
     exclusiveContent { // shedaniel - REI, architectury, cloth-config
         forRepository { maven { url = "https://maven.shedaniel.me/" } }
         filter {

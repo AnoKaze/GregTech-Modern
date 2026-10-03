@@ -20,7 +20,9 @@ dependencies {
     // Recipe Viewers
     modCompileOnly(forge.bundles.jei)
     modCompileOnly(forge.bundles.rei)
-    modCompileOnly(forge.emi)
+    // 原为 forge.emi（dev.emi:emi-forge），因 terraformersmc 仓库 302 到不可达的
+    // repo.sleeping.town 而改用 Modrinth Maven 上的同一版本制品
+    modCompileOnly(forge.emi.modrinth)
 
     // WAILA-likes
     modCompileOnly(forge.theoneprobe)
@@ -79,7 +81,7 @@ dependencies {
     modLocalRuntime(forge.modernfix)
 
     // Runtime Recipe Viewers - uncomment whichever one you want to use //
-    modLocalRuntime(forge.emi)
+    modLocalRuntime(forge.emi.modrinth)
 //    modLocalRuntime(forge.jei.forge.impl)
 //    modLocalRuntime(forge.bundles.rei.runtime)
 
